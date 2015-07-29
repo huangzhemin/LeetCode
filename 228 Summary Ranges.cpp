@@ -41,45 +41,31 @@ public:
         firstNum = nums[0];
         lastNum = firstNum;
         for (int i = 1; i < nums.size(); i ++) {
-            string unit;
             if (nums[i] != lastNum + 1) {
                 if (firstNum == lastNum) {
                     ss << firstNum;
-                    unit.append(ss.str());
-                    ss.str("");
-
                 } else {
                     ss << firstNum;
-                    unit.append(ss.str());
-                    ss.str("");
-                    unit.append("->");
+                    ss << "->";
                     ss << lastNum;
-                    unit.append(ss.str());
-                    ss.str("");
                 }
-                result.push_back(unit);
+                result.push_back(ss.str());
+                ss.str("");
                 firstNum = nums[i];
                 lastNum = firstNum;
             } else {
                 lastNum = nums[i];
             }
         }
-        string unit;
         if (firstNum == lastNum) {
             ss << firstNum;
-            unit.append(ss.str());
-            ss.str("");
         } else {
             ss << firstNum;
-            unit.append(ss.str());
-            ss.str("");
-            unit.append("->");
+            ss << "->";
             ss << lastNum;
-            unit.append(ss.str());
-            ss.str("");
         }
-        cout << unit << endl;
-        result.push_back(unit);
+        result.push_back(ss.str());
+        ss.str("");
         return result;
     }
 };
@@ -93,12 +79,11 @@ int main() {
     nums.push_back(4);
     nums.push_back(5);
     nums.push_back(7);
-//    for (int i = 0; i < nums.size(); i ++) {
-//        cout << nums[i] << endl;
-//    }
+    nums.push_back(8);
+    nums.push_back(10);
     vector<string> result = s.summaryRanges(nums);
-//    for (int i = 0; i < result.size(); i ++) {
-//        cout << result[i] << endl;
-//    }
+    for (int i = 0; i < result.size(); i ++) {
+        cout << result[i] << endl;
+    }
     return 0;
 }
