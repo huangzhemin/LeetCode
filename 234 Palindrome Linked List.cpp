@@ -28,29 +28,6 @@ using namespace std;
 
 class Solution {
 public:
-    //回文，如果是申请了空间的话，这道题目很容易，但是题目要求是控制在O(n)的时间复杂度和O(1)的空间复杂度
-    //所以解决这个问题的方法就是求启用两个指针，分别指向两边，然后判断两个指针指的值是否相等
-    //该方法超时
-    bool isPalindrome(ListNode* head) {
-        if (! head || !(head->next)) return true;
-        ListNode *leftElement = head;
-        ListNode *rightElement = head;
-        //移动右指针到结束位置
-        while (rightElement->next) rightElement = rightElement->next;
-        //比较左右指针的值
-        while (leftElement != rightElement && leftElement->next != rightElement && leftElement->val == rightElement->val) {
-            leftElement = leftElement->next;
-            ListNode *tempElement = leftElement;
-            while (tempElement->next != rightElement) tempElement = tempElement->next;
-            rightElement = tempElement;
-        }
-        if (leftElement->val == rightElement->val) return true;
-        else return false;
-    }
-};
-
-class Solution {
-public:
     bool isPalindrome(ListNode *head) {
         if (!head || !head->next)
             return true;
